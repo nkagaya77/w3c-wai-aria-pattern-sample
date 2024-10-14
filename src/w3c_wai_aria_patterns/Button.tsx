@@ -1,6 +1,6 @@
-interface ButtonProps {
+type ButtonProps = {
 	onClick: () => void;
-}
+};
 
 export const Button = (props: ButtonProps) => {
 	return (
