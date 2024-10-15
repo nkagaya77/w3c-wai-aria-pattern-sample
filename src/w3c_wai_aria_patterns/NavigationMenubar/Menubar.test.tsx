@@ -1,16 +1,9 @@
+import { Menubar } from "./Menubar";
 import { render, screen } from "@testing-library/react";
 import { expect, test } from "vitest";
-import { NavigationMenubar } from "./NavigationMenubar";
-
-test("show header", () => {
-	render(<NavigationMenubar />);
-
-	expect(screen.getByRole("banner")).toBeVisible();
-	expect(screen.getByText("W3C Patterns sample")).toBeVisible();
-});
 
 test("show navigation", () => {
-	render(<NavigationMenubar />);
+	render(<Menubar />);
 
 	expect(
 		screen.getByRole("navigation", { name: "W3C Patterns sample" }),
@@ -18,7 +11,7 @@ test("show navigation", () => {
 });
 
 test("show menubar", async () => {
-	render(<NavigationMenubar />);
+	render(<Menubar />);
 
 	expect(
 		screen.getByRole("menubar", { name: "W3C Patterns sample" }),
@@ -40,7 +33,7 @@ test("show menubar", async () => {
 });
 
 test("show submenu", async () => {
-	render(<NavigationMenubar />);
+	render(<Menubar />);
 
 	expect(screen.getByRole("menu", { name: "About" })).toBeVisible();
 	expect(screen.getByRole("menu", { name: "Facts" })).toBeVisible();
