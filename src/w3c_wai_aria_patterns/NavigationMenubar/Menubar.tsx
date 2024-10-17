@@ -23,7 +23,7 @@ export const Menubar = () => {
 					</a>
 				</li>
 				<li role="presentation" className="p-2">
-					<Menuitem />
+					<Menuitem title="About" />
 					<ul
 						role="menu"
 						aria-label="About"
