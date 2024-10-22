@@ -1,21 +1,29 @@
-import { useState } from "react";
+import { useState } from "react"
 
 type Props = {
-	title: string;
-	hasSubMenu?: boolean;
-};
+	title: string
+	hasSubMenu?: boolean
+}
 
 export const Menuitem = ({ title, hasSubMenu = false }: Props) => {
-	const [isExpanded, setIsExpanded] = useState(false);
+	const [isExpanded, setIsExpanded] = useState(false)
+
+	const conditionalAttributes = hasSubMenu
+		? {
+				"aria-haspopup": true,
+				"aria-expanded": isExpanded,
+			}
+		: {
+				"aria-current": "page" as const,
+			}
 
 	return (
 		<button
 			type="button"
 			role="menuitem"
-			aria-haspopup={hasSubMenu ? "true" : "false"}
-			aria-expanded={isExpanded}
+			{...conditionalAttributes}
 			onClick={() => setIsExpanded(!isExpanded)}
-			className="peer group flex items-center gap-1"
+			className="peer group flex items-center gap-1 aria-current:border-b-1 border-sky-700"
 		>
 			{title}
 			{hasSubMenu && (
@@ -32,5 +40,5 @@ export const Menuitem = ({ title, hasSubMenu = false }: Props) => {
 				</svg>
 			)}
 		</button>
-	);
-};
+	)
+}

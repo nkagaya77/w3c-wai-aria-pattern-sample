@@ -1,6 +1,6 @@
 type ButtonProps = {
-	onClick: () => void;
-};
+	onClick: () => void
+}
 
 export const Button = (props: ButtonProps) => {
 	return (
@@ -91,5 +91,5 @@ export const Button = (props: ButtonProps) => {
 				</defs>
 			</svg>
 		</div>
-	);
-};
+	)
+}

@@ -1,29 +1,22 @@
-import { useState } from "react";
-import { Menuitem } from "./Menuitem";
+import { useState } from "react"
+import { Menuitem } from "./Menuitem"
 
 export const Menubar = () => {
 	const [isFactsMenuChildItemExpanded, setisFactsMenuChildItemExpanded] =
-		useState(false);
+		useState(false)
 	const [
 		isCampusToursMenuChildItemExpanded,
 		setIsCampusToursMenuChildItemExpanded,
-	] = useState(false);
+	] = useState(false)
 
 	return (
 		<nav aria-label="W3C Patterns sample">
 			<ul className="flex" role="menubar" aria-label="W3C Patterns sample">
 				<li role="presentation" className="p-2">
-					<a
-						role="menuitem"
-						aria-current="page"
-						className="aria-current:border-b-1 border-sky-700 "
-						href="#home"
-					>
-						Home
-					</a>
+					<Menuitem title="Home" />
 				</li>
 				<li role="presentation" className="p-2">
-					<Menuitem title="About" />
+					<Menuitem title="About" hasSubMenu={true} />
 					<ul
 						role="menu"
 						aria-label="About"
@@ -288,5 +281,5 @@ export const Menubar = () => {
 				</li>
 			</ul>
 		</nav>
-	);
-};
+	)
+}

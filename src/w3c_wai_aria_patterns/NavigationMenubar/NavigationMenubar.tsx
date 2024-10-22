@@ -1,4 +1,4 @@
-import { Menubar } from "./Menubar";
+import { Menubar } from "./Menubar"
 
 export const NavigationMenubar = () => {
 	return (
@@ -19,5 +19,5 @@ export const NavigationMenubar = () => {
 			</div>
 			<footer>W3C Patterns sample</footer>
 		</div>
-	);
-};
+	)
+}
