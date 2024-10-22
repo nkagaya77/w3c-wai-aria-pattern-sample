@@ -1,8 +1,7 @@
 import { Menubar } from "./Menubar";
 import { render, screen } from "@testing-library/react";
-import { expect, test } from "vitest";
 
-test("show navigation", () => {
+it("show navigation", () => {
 	render(<Menubar />);
 
 	expect(
@@ -10,7 +9,7 @@ test("show navigation", () => {
 	).toBeVisible();
 });
 
-test("show menubar", async () => {
+it("show menubar", async () => {
 	render(<Menubar />);
 
 	expect(
@@ -32,7 +31,7 @@ test("show menubar", async () => {
 	}
 });
 
-test("show submenu", async () => {
+it("show submenu", async () => {
 	render(<Menubar />);
 
 	expect(screen.getByRole("menu", { name: "About" })).toBeVisible();

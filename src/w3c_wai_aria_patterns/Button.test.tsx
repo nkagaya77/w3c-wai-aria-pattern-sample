@@ -1,8 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { Button } from "./Button";
-import { expect, test, vi } from "vitest";
 
-test("show action button", () => {
+it("show action button", () => {
 	const onClick = vi.fn();
 	render(<Button onClick={onClick} />);
 
@@ -11,7 +10,7 @@ test("show action button", () => {
 	).toBeInTheDocument();
 });
 
-test("show toggle button", () => {
+it("show toggle button", () => {
 	const onClick = vi.fn();
 	render(<Button onClick={onClick} />);
 

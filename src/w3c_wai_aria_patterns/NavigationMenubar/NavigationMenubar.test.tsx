@@ -1,15 +1,14 @@
 import { render, screen, within } from "@testing-library/react";
-import { expect, test } from "vitest";
 import { NavigationMenubar } from "./NavigationMenubar";
 
-test("show header", () => {
+it("show header", () => {
 	render(<NavigationMenubar />);
 
 	const header = screen.getByRole("banner");
 	expect(within(header).getByText("W3C Patterns sample")).toBeVisible();
 });
 
-test("show content", () => {
+it("show content", () => {
 	render(<NavigationMenubar />);
 
 	expect(
@@ -17,7 +16,7 @@ test("show content", () => {
 	).toBeVisible();
 });
 
-test("show footer", () => {
+it("show footer", () => {
 	render(<NavigationMenubar />);
 
 	const footer = screen.getByRole("contentinfo");

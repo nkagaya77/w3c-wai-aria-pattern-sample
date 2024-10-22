@@ -1,8 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import { expect, test } from "vitest";
 import { Menuitem } from "./Menuitem";
 
-test("show menuitem without submenu", async () => {
+it("show menuitem without submenu", async () => {
 	render(<Menuitem title="Home" />);
 
 	const menuitem = screen.getByRole("menuitem", { name: "Home" });
@@ -13,7 +12,7 @@ test("show menuitem without submenu", async () => {
 	expect(await screen.queryByTitle("down")).not.toBeInTheDocument();
 });
 
-test("show menuitem with submenu", async () => {
+it("show menuitem with submenu", async () => {
 	render(<Menuitem title="About" hasSubMenu={true} />);
 
 	const menuitem = screen.getByRole("menuitem", { name: "About" });
