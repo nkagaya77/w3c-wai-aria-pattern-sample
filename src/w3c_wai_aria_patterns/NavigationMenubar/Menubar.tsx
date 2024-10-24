@@ -1,14 +1,10 @@
 import { useState } from "react"
 import { Menuitem } from "./Menuitem"
+import SubMenu from "./SubMenu"
+import { SubMenuItem } from "./SubMenuItem"
+import { Separator } from "./Separator"
 
 export const Menubar = () => {
-	const [isFactsMenuChildItemExpanded, setisFactsMenuChildItemExpanded] =
-		useState(false)
-	const [
-		isCampusToursMenuChildItemExpanded,
-		setIsCampusToursMenuChildItemExpanded,
-	] = useState(false)
-
 	return (
 		<nav aria-label="W3C Patterns sample">
 			<ul className="flex" role="menubar" aria-label="W3C Patterns sample">
@@ -17,145 +13,39 @@ export const Menubar = () => {
 				</li>
 				<li role="presentation" className="p-2">
 					<Menuitem title="About" hasSubMenu={true} />
-					<ul
-						role="menu"
-						aria-label="About"
-						className="hidden peer-aria-expanded:block absolute l-0 border border-2 border-sky-700 bg-gray-100 p-2 space-y-2 underline underline-offset-1"
-					>
-						<li role="presentation">
-							<a role="menuitem" href="#overview">
-								Overview
-							</a>
-						</li>
-						<li role="presentation">
-							<a role="menuitem" href="#administration">
-								Administration
-							</a>
-						</li>
-						<li role="presentation">
-							<button
-								type="button"
-								role="menuitem"
-								aria-haspopup="true"
-								aria-expanded={isFactsMenuChildItemExpanded}
-								onClick={() =>
-									setisFactsMenuChildItemExpanded(!isFactsMenuChildItemExpanded)
-								}
-								className="peer group flex items-center gap-1"
-							>
-								Facts
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									aria-hidden="true"
-									className="group-aria-expanded:rotate-180 transform transition-transform duration-0"
-									width="9"
-									height="12"
-									viewBox="0 0 9 12"
-								>
-									<title>right</title>
-									<polygon points="0 1, 0 11, 8 6" />
-								</svg>
-							</button>
-							<ul
-								role="menu"
-								aria-label="Facts"
-								className="hidden peer-aria-expanded:block absolute l-0 border border-2 border-sky-700 bg-gray-100 p-2 space-y-2 underline underline-offset-1"
-							>
-								<li role="presentation">
-									<a role="menuitem" href="#history">
-										History
-									</a>
-								</li>
-								<li role="presentation">
-									<a role="menuitem" href="#current-statistics">
-										Current Statistics
-									</a>
-								</li>
-								<li role="presentation">
-									<a role="menuitem" href="#awards">
-										Awards
-									</a>
-								</li>
-							</ul>
-						</li>
-						<li role="presentation">
-							<button
-								type="button"
-								role="menuitem"
-								aria-haspopup="true"
-								aria-expanded={isCampusToursMenuChildItemExpanded}
-								onClick={() =>
-									setIsCampusToursMenuChildItemExpanded(
-										!isCampusToursMenuChildItemExpanded,
-									)
-								}
-								className="peer group flex items-center gap-1"
-							>
-								Campus Tours
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									aria-hidden="true"
-									className="group-aria-expanded:rotate-180 transform transition-transform duration-0"
-									width="9"
-									height="12"
-									viewBox="0 0 9 12"
-								>
-									<title>right</title>
-									<polygon points="0 1, 0 11, 8 6" />
-								</svg>
-							</button>
-							<ul
-								role="menu"
-								aria-label="Campus Tours"
-								className="hidden peer-aria-expanded:block absolute l-0 border border-2 border-sky-700 bg-gray-100 p-2 space-y-2 underline underline-offset-1"
-							>
-								<li role="presentation">
-									<a role="menuitem" href="#for-prospective-students">
-										For prospective students
-									</a>
-								</li>
-								<li role="presentation">
-									<a role="menuitem" href="#for-alumni">
-										For alumni
-									</a>
-								</li>
-								<li role="presentation">
-									<a role="menuitem" href="#for-visitors">
-										For visitors
-									</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
+					<SubMenu
+						ariaLabel="About"
+						subMenuItems={[
+							<SubMenuItem key="overview" title="Overview" />,
+							<SubMenuItem key="administration" title="Administration" />,
+							<SubMenuItem key="facts" title="Facts" hasSubSubMenu={true} />,
+							<SubMenuItem
+								key="Campus Tours"
+								title="Campus Tours"
+								hasSubSubMenu={true}
+							/>,
+						]}
+					/>
 				</li>
 				<li role="presentation" className="p-2">
-					<button
-						type="button"
-						role="menuitem"
-						aria-haspopup="true"
-						aria-expanded="false"
-						onClick={() => setisAboutMenuExpanded(!isAboutMenuExpanded)}
-						className="peer"
-					>
-						Admissions
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							aria-hidden="true"
-							className="down"
-							width="12"
-							height="9"
-							viewBox="0 0 12 9"
-						>
-							<title>down</title>
-							<polygon points="1 0, 11 0, 6 8" />
-						</svg>
-					</button>
-					<ul role="menu" aria-label="Admissions">
-						<li role="presentation">
-							<a role="menuitem" href="#apply">
-								Apply
-							</a>
-						</li>
+					<Menuitem title="Admissions" hasSubMenu={true} />
+					<SubMenu
+						ariaLabel="Admissions"
+						subMenuItems={[
+							<SubMenuItem key="Apply" title="Apply" />,
+							<SubMenuItem
+								key="Undergraduate"
+								title="Undergraduate"
+								hasSubSubMenu={true}
+							/>,
+							<SubMenuItem key="Sign Up" title="Sign Up" />,
+							<Separator key="separator" />,
+							<SubMenuItem key="Visit" title="Visit" />,
+							<SubMenuItem key="Photo Tour" title="Photo Tour" />,
+							<SubMenuItem key="Connect" title="Connect" />,
+						]}
+					/>
+					{/* <ul role="menu" aria-label="Admissions">
 						<li role="presentation">
 							<a
 								role="menuitem"
@@ -193,91 +83,32 @@ export const Menubar = () => {
 								</li>
 							</ul>
 						</li>
-						<li role="presentation">
-							<a role="menuitem" href="#sign-up">
-								Sign Up
-							</a>
-						</li>
-						<li role="separator"></li>
-						<li role="presentation">
-							<a role="menuitem" href="#visit">
-								Visit
-							</a>
-						</li>
-						<li role="presentation">
-							<a role="menuitem" href="#photo-tour">
-								Photo Tour
-							</a>
-						</li>
-						<li role="presentation">
-							<a role="menuitem" href="#connect">
-								Connect
-							</a>
-						</li>
-					</ul>
+					</ul> */}
 				</li>
 				<li role="presentation" className="p-2">
-					<a
-						role="menuitem"
-						aria-haspopup="true"
-						aria-expanded="false"
-						href="#academics"
-					>
-						Academics
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							className="down"
-							width="12"
-							height="9"
-							viewBox="0 0 12 9"
-						>
-							<title>down</title>
-							<polygon points="1 0, 11 0, 6 8" />
-						</svg>
-					</a>
-					<ul role="menu" id="sub-menu-academics" aria-label="Academics">
-						<li role="presentation">
-							<a role="menuitem" href="#colleges-and-schools">
-								Colleges & Schools
-							</a>
-						</li>
-						<li role="presentation">
-							<a role="menuitem" href="#programs-of-study">
-								Programs of Study
-							</a>
-						</li>
-						<li role="presentation">
-							<a role="menuitem" href="#honors-programs">
-								Honors Programs
-							</a>
-						</li>
-						<li role="presentation">
-							<a role="menuitem" href="#online-courses">
-								Online Courses
-							</a>
-						</li>
-						<li role="separator"></li>
-						<li role="presentation">
-							<a role="menuitem" href="#course-explorer">
-								Course Explorer
-							</a>
-						</li>
-						<li role="presentation">
-							<a role="menuitem" href="#register-for-className">
-								Register for className
-							</a>
-						</li>
-						<li role="presentation">
-							<a role="menuitem" href="#academic-calendar">
-								Academic Calendar
-							</a>
-						</li>
-						<li role="presentation">
-							<a role="menuitem" href="#tanscripts">
-								Transcripts
-							</a>
-						</li>
-					</ul>
+					<Menuitem title="Academics" hasSubMenu={true} />
+					<SubMenu
+						ariaLabel="Academics"
+						subMenuItems={[
+							<SubMenuItem
+								key="Colleges & Schools"
+								title="Colleges & Schools"
+							/>,
+							<SubMenuItem key="Programs of Study" title="Programs of Study" />,
+							<SubMenuItem key="Honors Programs" title="Honors Programs" />,
+							<SubMenuItem key="Online Courses" title="Online Courses" />,
+							<Separator key="separator" />,
+							<SubMenuItem key="Course Explorer" title="Course Explorer" />,
+							<SubMenuItem
+								key="Register for className"
+								title="Register for className"
+							/>,
+							<SubMenuItem key="Academic Calendar" title="Academic Calendar" />,
+							<SubMenuItem key="Transcripts" title="Transcripts" />,
+						]}
+					/>
+					{/* <ul role="menu" id="sub-menu-academics" aria-label="Academics">
+					</ul> */}
 				</li>
 			</ul>
 		</nav>
