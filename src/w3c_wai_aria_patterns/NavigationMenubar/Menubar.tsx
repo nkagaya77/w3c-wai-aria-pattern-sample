@@ -1,8 +1,7 @@
-import { useState } from "react"
 import { Menuitem } from "./Menuitem"
-import SubMenu from "./SubMenu"
-import { SubMenuItem } from "./SubMenuItem"
-import { Separator } from "./Separator"
+import SubMenu from "./SubMenu/SubMenu"
+import { SubMenuItem } from "./SubMenu/SubMenuItem"
+import { Separator } from "./SubMenu/Separator"
 
 export const Menubar = () => {
 	return (
@@ -107,8 +106,6 @@ export const Menubar = () => {
 							<SubMenuItem key="Transcripts" title="Transcripts" />,
 						]}
 					/>
-					{/* <ul role="menu" id="sub-menu-academics" aria-label="Academics">
-					</ul> */}
 				</li>
 			</ul>
 		</nav>

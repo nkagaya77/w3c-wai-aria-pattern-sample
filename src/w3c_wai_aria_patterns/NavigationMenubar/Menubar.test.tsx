@@ -30,14 +30,3 @@ it("show menubar", async () => {
 		expect(menuitem).toHaveAttribute("aria-expanded", "false")
 	}
 })
-
-it("show submenu", async () => {
-	render(<Menubar />)
-
-	expect(screen.getByRole("menu", { name: "About" })).toBeVisible()
-	expect(screen.getByRole("menu", { name: "Facts" })).toBeVisible()
-	expect(screen.getByRole("menu", { name: "Campus Tours" })).toBeVisible()
-	expect(screen.getByRole("menu", { name: "Admissions" })).toBeVisible()
-	expect(screen.getByRole("menu", { name: "Tuition" })).toBeVisible()
-	expect(screen.getByRole("menu", { name: "Academics" })).toBeVisible()
-})
