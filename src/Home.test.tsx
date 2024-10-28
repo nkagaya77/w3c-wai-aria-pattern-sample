@@ -6,7 +6,7 @@ it("show component link cards", () => {
 	render(<Home />, { wrapper: BrowserRouter })
 
 	const linkCardList = screen.getByRole("list")
-	expect(linkCardList.children).toHaveLength(3)
+	expect(linkCardList.children).toHaveLength(4)
 
 	const linkToButton = screen.getByRole("link", { name: "Button" })
 	expect(linkToButton).toHaveAttribute("href", "/button")
@@ -16,4 +16,7 @@ it("show component link cards", () => {
 
 	const linkToSwitch = screen.getByRole("link", { name: "Switch" })
 	expect(linkToSwitch).toHaveAttribute("href", "/switch")
+
+	const linkToSwitchGroup = screen.getByRole("link", { name: "Switch Group" })
+	expect(linkToSwitchGroup).toHaveAttribute("href", "/switchgroup")
 })

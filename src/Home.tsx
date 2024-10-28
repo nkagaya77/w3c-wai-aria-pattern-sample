@@ -28,6 +28,14 @@ export const Home = () => {
 						<span>Switch</span>
 					</Link>
 				</li>
+				<li className="outline-2 bg-sky-300 h-24 rounded-lg text-center">
+					<Link
+						className="w-full h-full flex items-center justify-center"
+						to="/switchgroup"
+					>
+						<span>Switch Group</span>
+					</Link>
+				</li>
 			</ul>
 		</>
 	)
