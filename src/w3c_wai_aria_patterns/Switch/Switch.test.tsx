@@ -9,7 +9,6 @@ it("show switch", async () => {
 	expect(switchComponent).toBeVisible()
 	expect(switchComponent).toHaveAttribute("aria-checked", "false")
 	expect(screen.getByText("Off")).toBeVisible()
-	console.log(screen.getByText("On"))
 	expect(screen.getByText("On")).not.toBeVisible()
 
 	await userEvent.click(switchComponent)

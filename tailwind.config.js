@@ -3,7 +3,11 @@ const plugin = require("tailwindcss/plugin")
 export default {
 	content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
 	theme: {
-		extend: {},
+		extend: {
+			rotate: {
+				135: "135deg",
+			},
+		},
 	},
 	plugins: [
 		plugin(({ addUtilities }) => {
